@@ -1,6 +1,7 @@
 <?php
 session_start();
 if(isset($_SESSION['username'])){
+
 header("location:profile.php");
 }
 
@@ -50,7 +51,7 @@ header("location:profile.php");
                             <input type="checkbox" name="rem" class="custom-control-input" id="customCheck"
                                <?php if(isset($_COOKIE['username'])){ ?> checked <?php } ?>>
                             >
-                            <label for="customCheck" class="custom-control-label">Запомнить</label>
+                            <label for="customCheck" class="custom-control-label"> Запомнить </label>
                         </div>
                         <div class="form-group">
                             <input type="submit" name="login" id="login" value="Вход" class="btn btn-primary btn-block">
@@ -78,7 +79,7 @@ header("location:profile.php");
                         <input type="text" name="uname" class="form-control" placeholder="Логин" required>
                     </div>
                     <div class="form-group ">
-                        <input type="email" name="email" class="form-control" placeholder="E-mail" required>
+                        <input type="text" name="email" class="form-control" placeholder="E-mail"required>
                     </div>
                     <div class="form-group ">
                     <input type="password" name="pass" id="pass" class="form-control" placeholder="Пароль" required>
@@ -102,12 +103,3 @@ header("location:profile.php");
     <script src="myscript.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
