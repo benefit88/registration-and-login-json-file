@@ -18,31 +18,24 @@ require 'session.php';
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mx-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Pricing</a>
-                </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                         <?= $username; ?>
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="logout.php">Выход</a></li>
                     </ul>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
-<div class="jumbotron jumbotron-fluid">
+
     <div class="container">
         <h1 class="display-4"> Hello <?= $name; ?>    </h1>
         <h1 class="display-4"> Ваш логин: <?php echo $_SESSION['username']?>    </h1>
         <h1 class="display-4"> Ваш email: <?= $email; ?>    </h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
     </div>
-</div>
+
 </body>
 </html>
