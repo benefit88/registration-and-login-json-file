@@ -3,6 +3,9 @@
 if(isset($_POST['action'])&&$_POST['action']=='register') {
     $current_data = file_get_contents('data.json');
     $parser_json = json_decode($current_data, true);
+    $name = check_input($_POST['name']);
+    $uname = check_input($_POST['uname']);
+    $email= check_input($_POST['email']);
     $pass = check_input($_POST['pass']);
     $cpass = check_input($_POST['cpass']);
 
@@ -37,6 +40,7 @@ function usernameExists(){
         if($value['uname']==$uname){
             echo 'Пользаватель с таким логином существует';
 
+
             return true;}
         elseif ($value['email']==$email){
             echo 'Пользаватель с таким email существует';
@@ -46,6 +50,7 @@ function usernameExists(){
 
     }
     return false;
+
 }
 
 function insertUser(){
@@ -69,7 +74,7 @@ function insertUser(){
         $final_data = json_encode($array_data,JSON_UNESCAPED_UNICODE|JSON_PRETTY_PRINT);
         if(file_put_contents('data.json',$final_data)){
             echo 'Пользователь зарегистрирован';
-
+            
         }
         else{
             echo 'Что-то пошло не так';
@@ -95,13 +100,14 @@ function checkLoginPass()
 if(isset($_POST['action'])&&$_POST['action'] == 'login') {
     $username = $_POST['username'];
     $password = check_input($_POST['password']);
+    session_start();
 
     checkLoginPass();
-    session_start();
 
     if (checkLoginPass() == true) {
         $_SESSION['username'] = $username;
         echo "ok";
+
         if (!empty($_POST['rem'])) {
             setcookie("username", $_POST['username'], time() + (10 * 365 * 24 * 60 * 60));
             setcookie("password", $_POST['password'], time() + (10 * 365 * 24 * 60 * 60));
@@ -120,13 +126,3 @@ if(isset($_POST['action'])&&$_POST['action'] == 'login') {
     }
 
 }
-
-
-
-
-
-
-
-
-
-
