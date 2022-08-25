@@ -23,8 +23,10 @@ jQuery.validator.addMethod("checkEmail",function (value, element) {
 
 
 
+
     $(document).ready(function (){
-    $("#register-btn").click(function (){
+
+        $("#register-btn").click(function (){
         $("#register-box").show();
         $("#login-box").hide();
     });
@@ -65,6 +67,7 @@ jQuery.validator.addMethod("checkEmail",function (value, element) {
 
     });
     $("#register-frm").validate({
+
     rules:{
         name:{ <!--        имя-->
             required:true,
@@ -134,21 +137,25 @@ jQuery.validator.addMethod("checkEmail",function (value, element) {
     }
 
 });
-    $("#register").click(function (e){
-    if (document.getElementById('register-frm').checkValidity()){
-    e.preventDefault();
-    $.ajax({
+
+    $('#register').click(function (e){
+        $("#alert").hide();
+        if ($('#register-frm').valid()){
+            e.preventDefault();
+            $.ajax({
     url:'action.php',
     method:'post',
     data:$("#register-frm").serialize()+'&action=register',
     success:function (response){
-    $("#alert").show();
-    $("#result").html(response);
-}
-});
-}
-    return true;
-});
+        $("#alert").show();
+        $("#result").html(response);
+        }
+    });
+    }
+        return true;
+
+
+    });
     $("#login").click(function (e){
     if (document.getElementById('login-frm').checkValidity()){
     e.preventDefault();
